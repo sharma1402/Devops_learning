@@ -1,0 +1,24 @@
+name: Ci pipeline
+
+on: 
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+    - name: checout code
+      uses: actions/checkout@v5
+
+    - name: Set up Node.js 
+      use: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Install dependencies
+      run: npm Install
+
+    - name: Run tests
+      run: npm test
